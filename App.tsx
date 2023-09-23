@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { View, FlatList, StatusBar, Text } from 'react-native'
+import { INITIAL_DATA } from './data'
+import { styles } from './styles'
+import { ListItem } from './src/components/ListItem'
+import { getMonth } from './src/components/util'
+import { Menu } from './src/components/Menu'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export type Item = {
+  id: string
+  name: string
+  date_cadastro: string
+  payment: boolean
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const statusBarHeight = StatusBar.currentHeight || 0
+
+const App = () => {
+  // Ordena a array 'pessoas' com base na chave 'idade'
+  INITIAL_DATA.sort((itemA, itemB) => {
+    if (!itemA.payment && itemB.payment) {
+      return -1 // itemA vem antes de itemB
+    } else if (itemA.payment && !itemB.payment) {
+      return 1 // itemB vem antes de itemA
+    } else {
+      return 0 // Mantém a ordem original
+    }
+  })
+  return (
+    <View style={{ marginTop: statusBarHeight }}>
+      <Menu />
+      <FlatList
+        data={INITIAL_DATA}
+        renderItem={({ item }) => <ListItem item={item} />}
+        keyExtractor={(item) => item.id}
+      />
+    </View>
+  )
+}
+
+export default App
