@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "19181840501",
+    "project_id": "academia-e930c",
+    "storage_bucket": "academia-e930c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19181840501:android:1041c232cd90998166703c",
+        "android_client_info": {
+          "package_name": "academia.ministro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwAqMpKnY4Qeg5TCYTZlOEWvIX9Wjk-g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
